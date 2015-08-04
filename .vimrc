@@ -13,8 +13,11 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'mattn/emmet-vim' 
 Plugin 'elzr/vim-json'
+Plugin 'fatih/vim-go'
+Plugin 'kien/ctrlp.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
+nnoremap ; :
 syntax on
 colorscheme desert
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
