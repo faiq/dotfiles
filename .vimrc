@@ -15,10 +15,12 @@ Plugin 'mattn/emmet-vim'
 Plugin 'elzr/vim-json'
 Plugin 'fatih/vim-go'
 Plugin 'kien/ctrlp.vim'
+Plugin 'nvie/vim-flake8'
 call vundle#end()            " required
 filetype plugin indent on    " required
 nnoremap ; :
 syntax on
+autocmd BufWritePost *.py call Flake8()
 colorscheme desert
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript  setlocal ts=2 sw=2 expandtab
