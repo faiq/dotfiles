@@ -24,6 +24,6 @@ autocmd BufWritePost *.py call Flake8()
 colorscheme desert
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript  setlocal ts=2 sw=2 expandtab
-autocmd Filetype python setlocal ts=4 sw=4 sts=0 noexpandtab
+autocmd Filetype python setlocal ts=4 sw=4 sts=0 expandtab
 set t_Co=256
 let &t_Co=256
