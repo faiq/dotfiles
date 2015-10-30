@@ -68,8 +68,8 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
-
-
+ulimit -n 1024
+ulimit -u 1024
 export EDITOR=vim
 alias tmux="TERM=screen-256color-bce tmux"
 alias l='ls'
@@ -80,3 +80,6 @@ export PATH=/usr/local/bin:$PATH
 export ES_HOME=~/dev/elasticsearch/
 export PATH=$ES_HOME/bin:$JAVA_HOME/bin:$PATH
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+export GOPATH=~/go
+export PATH=$PATH:/$GOPATH/bin
+export PATH=$(npm bin):$PATH
