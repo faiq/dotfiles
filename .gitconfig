@@ -1,8 +1,8 @@
 [user]
-	name = faiq
-	email = faiqrazarizvi@gmail.com
+    name = faiq
+    email = faiqrazarizvi@gmail.com
 [core]
-	autocrlf = input
+    autocrlf = false
     safecrlf = true
 [alias]
     co = checkout
@@ -12,8 +12,16 @@
     hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
     type = cat-file -t
     dump = cat-file -p
+    d = difftool
+    diff = difftool
 [push]
-	default = matching
+    default = matching
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+    clean = git-media-clean %f
+    smudge = git-media-smudge %f
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
+[credential]
+    helper = osxkeychain
