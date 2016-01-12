@@ -13,7 +13,7 @@ Plugin 'fugitive.vim'
 Plugin 'godlygeek/csapprox'
 Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'mattn/emmet-vim' 
+Plugin 'mattn/emmet-vim'
 Plugin 'elzr/vim-json'
 Plugin 'kien/ctrlp.vim'
 Plugin 'nvie/vim-flake8'
@@ -22,7 +22,6 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 nnoremap ; :
 syntax on
-autocmd BufWritePost *.py call Flake8()
 colorscheme desert
 set tabstop=4
 set softtabstop=4
@@ -31,9 +30,16 @@ set expandtab
 set autoindent
 set smarttab
 set ru
+autocmd BufWritePost *.py call Flake8()
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript  setlocal ts=2 sw=2 expandtab
 autocmd Filetype python setlocal ts=4 sw=4 sts=0 expandtab
 autocmd Filetype go setlocal ts=8 sw=8 sts=0 noexpandtab
 set t_Co=256
 let &t_Co=256
+let g:go_fmt_command = "goimports"
+"white space detection
+highlight ExtraWhitespace ctermbg=red guibg=red
+:match ExtraWhitespace /\s\+$/
+set list!
+set listchars=tab:▸\ ,
