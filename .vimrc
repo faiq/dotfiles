@@ -40,6 +40,7 @@ let &t_Co=256
 let g:go_fmt_command = "goimports"
 "white space detection
 highlight ExtraWhitespace ctermbg=red guibg=red
-:match ExtraWhitespace /\s\+$/
-set list!
-set listchars=tab:▸\ ,
+match ExtraWhitespace /\s\+$/
+set hlsearch
+set ignorecase
+set nu
