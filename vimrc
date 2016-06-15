@@ -44,3 +44,4 @@ match ExtraWhitespace /\s\+$/
 set hlsearch
 set ignorecase
 set nu
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
