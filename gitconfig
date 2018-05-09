@@ -27,9 +27,5 @@
     prompt = false
 [help]
 	  autocorrect = 5
-#[credential]
-#    helper = osxkeychain
-[url "git@github.com:"]
-  insteadOf = https://github.com/
-[url "ssh://git@bitbucket.aka.lgl.grungy.us:7999/"]
-	insteadof = https://bitbucket.aka.lgl.grungy.us/
+#[url "git@github.com:"]
+#  insteadOf = https://github.com/

@@ -23,7 +23,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 nnoremap ; :
 syntax on
-colorscheme znake
+colorscheme desert
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2

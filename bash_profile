@@ -1,6 +1,5 @@
 PATH=$PATH:$HOME/.rvm/bin:$HOME/bin # Add RVM to PATH for scripting
 [ -z "$PS1" ] && return # If not running interactively, don't do anything
-export TERM=screen-256color
 HISTSIZE=
 HISTFILESIZE=
 HISTCONTROL=ignoreboth
@@ -123,3 +122,5 @@ function oshell(){
 export PATH=/Users/Faiq/bin:$PATH
 
 [[ -e "/Users/Faiq/lib/oracle-cli/lib/python3.6/site-packages/oci_cli/bin/oci_autocomplete.sh" ]] && source "/Users/Faiq/lib/oracle-cli/lib/python3.6/site-packages/oci_cli/bin/oci_autocomplete.sh"
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
