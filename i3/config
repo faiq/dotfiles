@@ -9,10 +9,6 @@ bindsym $mod+Shift+Q kill
 #start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
-bindsym XF86AudioMute exec amixer -c 0 -D pulse set Master 1+ toggle
-bindsym XF86AudioRaiseVolume exec amixer -c 0 set Master 2dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -c 0 set Master 2dB- unmute
-
 #space bg
 exec --no-startup-id feh --bg-fill ~/wallpaper.jpg
 
@@ -38,7 +34,8 @@ bindsym $mod+Shift+Tab focus left
 
 bar {
     position top
-    status_command i3status
+    status_command i3blocks
+    font pango:Terminus 20px
 }
 
 bindsym $mod+f fullscreen toggle
@@ -119,3 +116,9 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 bindsym $mod+Shift+e mode "$mode_system
+
+#volume
+bindsym XF86AudioMute exec amixer set Master toggle;  exec pkill  -RTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+; exec pkill  -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-; exec pkill  -RTMIN+10 i3blocks
+
