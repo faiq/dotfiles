@@ -28,4 +28,4 @@ UXTerm*background: black
 UXTerm*foreground: white
 UXTerm*font: terminus-10
 
-Xft.dpi: 200
+Xft.dpi: 150

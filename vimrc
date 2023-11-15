@@ -1,6 +1,6 @@
 set termencoding=utf-8
 set background=dark
-set nocompatible              " be iMproved, required
+set nocompatible              " be improved, required
 set backspace=indent,eol,start
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -19,6 +19,9 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'vim-scripts/Vimplate-Enhanced'
+Plugin 'udalov/kotlin-vim'
+Plugin 'hashivim/vim-terraform'
+Plugin 'juliosueiras/vim-terraform-completion'
 call vundle#end()            " required
 filetype plugin indent on    " required
 nnoremap ; :
@@ -46,7 +49,7 @@ set autoread
 
 set t_Co=256
 let &t_Co=256
-let g:go_fmt_command = "goimports"
+"let g:go_fmt_command = "goimports"
 "white space detection
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -70,6 +73,8 @@ au FileType go nmap <Leader>b <Plug>(go-build)
 au FileType go nmap <Leader>t <Plug>(go-test)
 au FileType go nmap <Leader>c <Plug>(go-coverage)
 
+au BufNewFile,BufRead *.kt set filetype=kotlin
+
 " nohl fast
 map nh :nohl<CR>
 
@@ -78,6 +83,9 @@ let maplocalleader="."
 let Vimplate = "~/.vim/bundle/Vimplate-Enhanced/vimplate.pl"
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 let g:NERDTreeDirArrows=0
+let g:ycm_path_to_python_interpreter="/usr/bin/python3"
 setlocal foldmethod=syntax
 autocmd InsertEnter * let w:last_fdm=&foldmethod | setlocal foldmethod=manual
 autocmd InsertLeave * let &l:foldmethod=w:last_fdm
+
+" set spell

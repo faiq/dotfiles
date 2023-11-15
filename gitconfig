@@ -1,6 +1,7 @@
 [user]
-    name = faiq
-    email = faiqrazarizvi@gmail.com
+	  name = faiq
+	  email = faiqrazarizvi@gmail.com
+	  signingkey = FE50D686796F75B265C2D1E245746E5AF5F01210
 [core]
     autocrlf = false
     safecrlf = true
@@ -20,12 +21,18 @@
     default = matching
 [filter "media"]
     clean = git-media-clean %f
-    smudge = git-media-smudge %f
-[diff]
-    tool = vimdiff
+  smudge = git-media-smudge %f
 [difftool]
-    prompt = false
+    prompt = true
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [help]
 	  autocorrect = 5
 [url "git@github.com:"]
   insteadOf = https://github.com/
+[commit]
+  gpgSign = true
+[tag]
+  forceSignAnnotated = true
