@@ -1,16 +1,12 @@
 xterm*ttyModes:         erase ^?
-xterm*VT100.Translations: \
-        #override <Key>BackSpace: string(0x7f) \n\
-                  <Key>Delete:    string(0x1b) string("[3~")
 xterm*reverseVideo: off
 xterm*metaSendsEscape: true
 ! xterm ----------------------------------------------------------------------
 
 xterm*VT100.geometry:     80x25
-xterm*faceName:           Terminus:style=Regular:size=12:antialias=false
+xterm*faceName:           Hack:style=Regular:size=12:antialias=false
 xterm*background:         black
 xterm*foreground:         white
-xterm*font:              -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
 xterm*dynamicColors:      true
 xterm*utf8:               2
 xterm*eightBitInput:      true
@@ -26,6 +22,12 @@ xterm*toolBar:            false
 UXTerm*reverseVideo: off
 UXTerm*background: black
 UXTerm*foreground: white
-UXTerm*font: terminus-10
 
-Xft.dpi: 150
+Xft.dpi: 110
+xterm*VT100.Translations: #override \
+      Shift <KeyPress> Insert: insert-selection(CLIPBOARD) \n\
+      Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
+      Ctrl Shift <Key>C:    copy-selection(CLIPBOARD) \n\
+      Ctrl <Btn1Up>: exec-formatted("xdg-open '%t'", PRIMARY)
+      <Key>BackSpace: string(0x7f) \n\
+      <Key>Delete:    string(0x1b) string("[3~")

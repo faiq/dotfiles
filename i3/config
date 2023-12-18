@@ -10,7 +10,7 @@ bindsym $mod+Shift+Q kill
 bindsym $mod+Return exec i3-sensible-terminal
 
 #space bg
-exec --no-startup-id feh --bg-fill ~/wallpaper.jpg
+exec --no-startup-id feh --bg-fill /home/faiqus/background.jpg
 
 # move focused window
 bindsym $mod+Shift+j move left
@@ -118,8 +118,37 @@ mode "$mode_system" {
 bindsym $mod+Shift+e mode "$mode_system
 
 #volume
-bindsym XF86AudioMute exec pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle;  exec pkill  -RTMIN+10 i3blocks
-bindsym XF86AudioRaiseVolume exec amixer set Master 5%+; exec pkill  -RTMIN+10 i3blocks
-bindsym XF86AudioLowerVolume exec amixer set Master 5%-; exec pkill  -RTMIN+10 i3blocks
 bindsym Print exec gnome-screenshot -i
 bindsym $mod+Print exec gnome-screenshot -a
+# Review the lines below and append to ~/.config/i3/config
+
+## Volume control
+
+# Path to volume control, without trailing slash
+set $volumepath ~/i3-volume
+
+# Command for the status line
+#   ie: i3blocks, i3status
+set $statuscmd i3status
+
+# Signal used to update the status line
+#   i3blocks uses SIGRTMIN+10 by default
+#   i3status uses SIGUSR1 by default
+set $statussig SIGUSR1
+
+# Amount to increase/decrease volume as a percentage
+set $volumestep 5
+
+# alsa-utils settings
+#
+# To configure a default card, see https://www.alsa-project.org/main/index.php/Asoundrc
+#
+# Card number to control.
+#   If not specified, i3-volume will let `amixer` use a default.
+#   List cards: aplay -l
+#set $alsacard 1
+
+# append "-c $alsacard" without quotes to override default card
+bindsym XF86AudioRaiseVolume exec --no-startup-id $volumepath/volume -an -t $statuscmd -u $statussig up $volumestep
+bindsym XF86AudioLowerVolume exec --no-startup-id $volumepath/volume -an -t $statuscmd -u $statussig down $volumestep
+bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -an -t $statuscmd -u $statussig mute

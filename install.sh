@@ -38,6 +38,5 @@ function make_links() {
   done
 }
 
-sudo apt install neovim
 make_links "${HOME}/dotfiles/"
 source ~/.bash_profile

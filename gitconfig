@@ -1,10 +1,10 @@
 [user]
-	  name = faiq
-	  email = faiqrazarizvi@gmail.com
-	  signingkey = FE50D686796F75B265C2D1E245746E5AF5F01210
+  name = faiq
+  email = faiq.raza@nutanix.com
+  signingkey = 29341F22CAD5FF54
 [core]
-    autocrlf = false
-    safecrlf = true
+  autocrlf = false
+  safecrlf = true
 [alias]
     co = checkout
     ci = commit
