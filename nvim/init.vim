@@ -2,6 +2,31 @@ set termencoding=utf-8
 set background=dark
 set nocompatible              " be improved, required
 set backspace=indent,eol,start
+" Note: Skip initialization for vim-tiny or vim-small.
+if 0 | endif
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" Required:
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle "folke/tokyonight.nvim"
+NeoBundle 'easymotion/vim-easymotion'
+NeoBundle 'neoclide/coc.nvim'
+" My Bundles here:
+" Refer to |:NeoBundle-examples|.
+" Note: You don't set neobundle setting in .gvimrc!
+call neobundle#end()
+" Required:
+filetype plugin indent on
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -25,7 +50,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 nnoremap ; :
 syntax on
-colorscheme desert
+colorscheme tokyonight-storm
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -47,7 +72,7 @@ set autoread
 
 set t_Co=256
 let &t_Co=256
-"let g:go_fmt_command = "goimports"
+"let g:go_fmt_command = "gofumpt"
 "white space detection
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -87,3 +112,28 @@ autocmd InsertEnter * let w:last_fdm=&foldmethod | setlocal foldmethod=manual
 autocmd InsertLeave * let &l:foldmethod=w:last_fdm
 
 " set spell
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+map <Leader> <Plug>(easymotion-prefix)
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+set clipboard=unnamedplus
+nnoremap Y Y
+
+if !exists("g:yamllint_command")
+    let g:yamllint_command = "yamllint"
+endif
+
+function! Yamllint()
+    silent !clear
+    execute "!" .  g:yamllint_command . " " . bufname("%")
+endfunction
+
+command! Yamllint call Yamllint()
+

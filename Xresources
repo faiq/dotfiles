@@ -23,7 +23,7 @@ UXTerm*reverseVideo: off
 UXTerm*background: black
 UXTerm*foreground: white
 
-Xft.dpi: 110
+Xft.dpi: 100
 xterm*VT100.Translations: #override \
       Shift <KeyPress> Insert: insert-selection(CLIPBOARD) \n\
       Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\

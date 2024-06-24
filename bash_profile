@@ -108,6 +108,7 @@ alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 alias clear='clear -x'
 alias vimdiff='nvim -d'
+alias k='kubectl'
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/faiqraza/dev/google-cloud-sdk/path.bash.inc' ]; then . '/home/faiqraza/dev/google-cloud-sdk/path.bash.inc'; fi

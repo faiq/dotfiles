@@ -31,7 +31,7 @@
 [help]
 	  autocorrect = 5
 [url "git@github.com:"]
-  insteadOf = https://github.com/
+	insteadOf = https://github.com/
 [commit]
   gpgSign = true
 [tag]
