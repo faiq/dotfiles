@@ -1,7 +1,7 @@
 [user]
   name = faiq
   email = faiq.raza@nutanix.com
-  signingkey = 29341F22CAD5FF54
+  signingkey = E84A4865680BA283
 [core]
   autocrlf = false
   safecrlf = true
@@ -21,7 +21,7 @@
     default = matching
 [filter "media"]
     clean = git-media-clean %f
-  smudge = git-media-smudge %f
+    smudge = git-media-smudge %f
 [difftool]
     prompt = true
 [diff]
@@ -29,10 +29,10 @@
 [difftool "nvimdiff"]
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [help]
-	  autocorrect = 5
+     autocorrect = 5
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [commit]
-  gpgSign = true
+     gpgSign = true
 [tag]
-  forceSignAnnotated = true
+     forceSignAnnotated = true

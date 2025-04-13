@@ -47,7 +47,7 @@ set autoread
 
 set t_Co=256
 let &t_Co=256
-"let g:go_fmt_command = "goimports"
+let g:go_fmt_command = "goimports"
 "white space detection
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/

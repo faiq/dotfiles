@@ -76,7 +76,6 @@ alias la='ls -a'
 alias sl='ls'
 alias ll='ls'
 alias ci='nvim'
-alias vi='nvim'
 alias bi='nvim'
 alias vim='nvim'
 alias gti='git'
@@ -120,3 +119,6 @@ export PATH=$PATH:/home/faiqraza/dotfiles/bin
 export PATH="$PATH:~/.asdf/bin"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"
 . /home/faiqraza/.asdf/asdf.sh
+
+if [ -e /home/fraza/.nix-profile/etc/profile.d/nix.sh ]; then . /home/fraza/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+if [ -f '/home/fraza/google-cloud-sdk/path.bash.inc' ]; then . '/home/fraza/google-cloud-sdk/path.bash.inc'; fi

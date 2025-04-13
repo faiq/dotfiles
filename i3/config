@@ -151,7 +151,12 @@ set $volumestep 5
 #   List cards: aplay -l
 #set $alsacard 1
 
-# append "-c $alsacard" without quotes to override default card
-bindsym XF86AudioRaiseVolume exec --no-startup-id $volumepath/volume -an -t $statuscmd -u $statussig up $volumestep
-bindsym XF86AudioLowerVolume exec --no-startup-id $volumepath/volume -an -t $statuscmd -u $statussig down $volumestep
-bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -an -t $statuscmd -u $statussig mute
+# User-added function keys:
+
+# change volume or toggle mut
+bindsym XF86AudioMute exec  amixer -q set Master toggle; exec pkill -RTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+; exec pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-; exec pkill -RTMIN+10 i3blocks
+bindsym XF86MonBrightnessDown exec brightnessctl s 5-%;
+bindsym XF86MonBrightnessUp exec brightnessctl s 5+%;
+bindsym --release Print exec gnome-screenshot -i
