@@ -5,6 +5,7 @@
 [core]
   autocrlf = false
   safecrlf = true
+	pager = less
 [alias]
     co = checkout
     ci = commit

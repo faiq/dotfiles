@@ -90,35 +90,19 @@ export PATH=$PATH:$HOME/bin
 export GO15VENDOREXPERIMENT=1
 
 export PATH=$PATH:/Users/Faiq/bin
-
-source '/Users/Faiq/lib/azure-cli/az.completion'
-
-
 export LC_CTYPE=en_US.UTF-8
-
-#export M3_HOME="/Applications/apache-maven-3.5.3" # replace n.n.n with appropriate version
-#export M3=$M3_HOME/bin
-#export PATH=$M3:$PATH
 
 export PATH=$PATH:/Users/Faiq/bin
 
-[[ -e "/Users/Faiq/lib/oracle-cli/lib/python3.6/site-packages/oci_cli/bin/oci_autocomplete.sh" ]] && source "/Users/Faiq/lib/oracle-cli/lib/python3.6/site-packages/oci_cli/bin/oci_autocomplete.sh"
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 alias clear='clear -x'
 alias vimdiff='nvim -d'
 alias k='kubectl'
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/faiqraza/dev/google-cloud-sdk/path.bash.inc' ]; then . '/home/faiqraza/dev/google-cloud-sdk/path.bash.inc'; fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/faiqraza/dev/google-cloud-sdk/completion.bash.inc' ]; then . '/home/faiqraza/dev/google-cloud-sdk/completion.bash.inc'; fi
-
-export PATH=$PATH:/home/faiqraza/dotfiles/bin
 export PATH="$PATH:~/.asdf/bin"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"
-. /home/faiqraza/.asdf/asdf.sh
-
+. /home/fraza/.asdf/asdf.sh
 if [ -e /home/fraza/.nix-profile/etc/profile.d/nix.sh ]; then . /home/fraza/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-if [ -f '/home/fraza/google-cloud-sdk/path.bash.inc' ]; then . '/home/fraza/google-cloud-sdk/path.bash.inc'; fi
+export PATH=$PATH:/home/fraza/.yarn/bin

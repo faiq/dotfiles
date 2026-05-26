@@ -4,7 +4,6 @@ vim.o.encoding = 'utf-8'
 vim.o.backspace = 'indent,eol,start'
 require('plugins')
 require('snippets')
-local lspconfig = require('lspconfig')
 local mason = require('mason')
 local mason_lspconfig = require('mason-lspconfig')
 
@@ -14,10 +13,26 @@ mason_lspconfig.setup({
   automatic_installation = true,
 })
 
-lspconfig.pyright.setup({})
-lspconfig.ts_ls.setup({})
-lspconfig.gopls.setup({})
-lspconfig.lua_ls.setup {
+vim.lsp.config.gopls = {
+  cmd = {'gopls'},
+  capabilities = capabilities,
+  settings = {
+    gopls = {
+      experimentalPostfixCompletions = true,
+      analyses = {
+        unusedparams = true,
+        shadow = true,
+      },
+      staticcheck = true,
+      buildFlags = {"-tags=e2e,integration"},
+    },
+  },
+  init_options = {
+    usePlaceholders = true,
+  }
+}
+
+vim.lsp.config.lua_ls = {
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name
@@ -42,6 +57,9 @@ lspconfig.lua_ls.setup {
     Lua = {}
   }
 }
+-- enable lsp
+vim.lsp.enable({ 'gopls', 'pyright', 'ts_ls', 'lua_ls' })
+
 
 -- Filetype and syntax
 vim.cmd('filetype plugin indent on')
@@ -111,7 +129,7 @@ vim.api.nvim_set_keymap('n', 'Y', 'Y', {noremap = true})
 
 -- Leader key
 vim.g.mapleader = ','
-vim.g.maplocalleader = '.'
+vim.g.maplocalleader = ','
 
 -- Go specific mappings
 vim.api.nvim_create_autocmd('FileType', {
@@ -169,8 +187,19 @@ end
 
 vim.cmd('command! Yamllint call v:lua.Yamllint()')
 
-vim.api.nvim_buf_set_keymap(0, 'n', 'dv', '<Cmd>lua vim.lsp.buf.definition({ open_cmd = "vsplit" })<CR>', { noremap = true, silent = true })
-vim.api.nvim_buf_set_keymap(0, 'n', 'ds', '<Cmd>lua vim.lsp.buf.definition({ open_cmd = "split" })<CR>', { noremap = true, silent = true })
+function go_to_definition_vsplit()
+  vim.cmd('vsplit')
+  vim.lsp.buf.definition()
+end
+
+function go_to_definition_split()
+  vim.cmd('split')
+  vim.lsp.buf.definition()
+end
+
+vim.api.nvim_set_keymap('n', 'dv', '<Cmd>lua go_to_definition_vsplit()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'ds', '<Cmd>lua go_to_definition_split()<CR>', { noremap = true, silent = true })
+
 
 vim.cmd[[set completeopt+=menuone,noselect,popup]]
 
@@ -182,3 +211,4 @@ end
 
 vim.api.nvim_set_keymap('n', '<leader>cc', '<cmd>lua require("llm-chat").open_chat()<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>cq', '<cmd>lua require("llm-chat").close_chat()<CR>', {noremap = true})
+
